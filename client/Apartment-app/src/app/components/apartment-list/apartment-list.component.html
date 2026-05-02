@@ -1,0 +1,59 @@
+<div class="gallery-container" dir="rtl">
+  
+  <header class="gallery-header">
+    <div class="search-wrapper">
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm" 
+        (input)="onSearch()" 
+        placeholder="חפשו לפי עיר, כתובת או כותרת..."
+      >
+      <span class="search-icon">🔍</span>
+    </div>
+    
+    <!-- <button class="btn-add" (click)="goToAdd()">
+      <span class="plus-icon">+</span> נכס חדש
+    </button>  -->
+
+  </header>
+
+  <ng-container *ngIf="apartments && apartments.length > 0; else noData">
+    <div class="apartments-grid">
+      <div class="apartment-card" *ngFor="let apt of apartments">
+        <div class="status-tag" [class.available]="apt.StatusName === 'פנוי'">
+          {{ apt.StatusName }}
+        </div>
+
+        <div class="card-content">
+          <h3 class="apt-title">{{ apt.Title }}</h3>
+          
+          <div class="apt-details">
+            <p class="location">📍 {{ apt.City }}, {{ apt.Address }}</p>
+            <div class="specs">
+              <span><strong>חדרים:</strong> {{ apt.Rooms }}</span>
+              <span><strong>סוכן:</strong> {{ apt.AgentName }}</span>
+            </div>
+          </div>
+
+          <div class="apt-price">
+            <span class="currency">₪</span>
+            <span class="amount">{{ apt.Price | number }}</span>
+          </div>
+        </div>
+
+        <footer class="card-actions">
+          <button class="btn-details" (click)="viewDetails(apt.Id)">פרטים</button>
+          <button class="btn-edit" (click)="editApartment(apt.Id)">עריכה</button>
+        </footer>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #noData>
+    <div class="no-data-container">
+      <div class="no-data-icon">📋</div>
+      <h3>לא נמצאו נכסים</h3>
+      <p>נראה שאין נתונים התואמים לחיפוש שלך. נסו מונח אחר או אפסו את החיפוש.</p>
+    </div>
+  </ng-template>
+</div>

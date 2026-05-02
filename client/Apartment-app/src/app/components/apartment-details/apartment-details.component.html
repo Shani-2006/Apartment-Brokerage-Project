@@ -1,0 +1,39 @@
+<div class="details-container" *ngIf="apartment" dir="rtl">
+  <header class="details-header">
+    <button class="btn-back" (click)='goBack()'>→ חזרה לרשימה</button>
+    <h1>{{ apartment.Title }}</h1>
+  </header>
+
+  <div class="details-card">
+    <div class="info-section">
+      <div class="main-info">
+        <div class="price-tag">₪ {{ apartment.Price | number }}</div>
+        <p class="location">📍 {{ apartment.City }}, {{ apartment.Address }}</p>
+      </div>
+
+      <div class="description">
+        <h3>תיאור הנכס</h3>
+        <p>{{ apartment.Description }}</p>
+      </div>
+
+      <div class="specs-grid">
+        <div class="spec-item">
+          <span class="label">מספר חדרים:</span>
+          <span class="value">{{ apartment.Rooms }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="label">סטטוס:</span>
+          <span class="value status-badge">{{ apartment.StatusName }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="label">סוכן מטפל:</span>
+          <span class="value">{{ apartment.AgentName }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="label">תאריך פרסום:</span>
+          <span class="value">{{ apartment.CreatedAt | date:'dd/MM/yyyy' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

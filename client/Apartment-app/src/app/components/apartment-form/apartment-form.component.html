@@ -1,0 +1,75 @@
+<div class="form-container">
+  <div class="card-form">
+    <header>
+      <h2>{{ isEditMode ? 'עריכת פרטי נכס' : 'הוספת נכס חדש' }}</h2>
+      <p>מלאי את הפרטים הבאים כדי לעדכן את מאגר הדירות במערכת</p>
+    </header>
+
+    <form [formGroup]="apartmentForm" (ngSubmit)="onSubmit()">
+      
+      <div class="form-group">
+        <label>כותרת המודעה *</label>
+        <input type="text" formControlName="Title" placeholder="לדוגמה: דירת 4 חדרים שקטה ונוחה">
+        <div class="error-msg" *ngIf="apartmentForm.get('Title')?.touched && apartmentForm.get('Title')?.invalid">
+          יש להזין כותרת באורך 5 תווים לפחות
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>תיאור הנכס *</label>
+        <textarea formControlName="Description" rows="4" placeholder="פרטי הנכס, קומה, כיוונים, מצב הדירה..."></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>מחיר (₪) *</label>
+          <input type="number" formControlName="Price">
+        </div>
+        <div class="form-group">
+          <label>מספר חדרים *</label>
+          <input type="number" formControlName="Rooms">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>עיר *</label>
+          <select formControlName="City">
+            <option value="">בחרי עיר...</option>
+            <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>כתובת *</label>
+          <input type="text" formControlName="Address" placeholder="רחוב ומספר בית">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>סוכן אחראי *</label>
+          <select formControlName="AgentId">
+            <option value="">בחרי סוכן מהרשימה...</option>
+            <option *ngFor="let agent of agents" [value]="agent.Id">{{ agent.FullName }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>סטטוס הנכס *</label>
+          <select formControlName="StatusId">
+            <option value="">בחרי סטטוס...</option>
+            <option *ngFor="let status of statuses" [value]="status.Id">{{ status.Name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" (click)="goBack()">ביטול וחזרה</button>
+        
+        <button type="submit" class="btn-submit" [disabled]="apartmentForm.invalid">
+          {{ isEditMode ? 'עדכן פרטי נכס' : 'שמור נכס חדש' }}
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

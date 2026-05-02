@@ -1,0 +1,108 @@
+/* ייבוא הגופן Assistant - חובה כדי שהכתב יהיה רך */
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&display=swap');
+
+$primary-burgundy: #a01a1c;
+$dark-charcoal: #2d3748;
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f7fafc;
+  /* החלת הגופן על כל האפליקציה לרכות אחידה */
+  font-family: 'Assistant', sans-serif; 
+  direction: rtl;
+}
+
+.main-header {
+  background: white;
+  padding: 12px 0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+  border-bottom: 3px solid $primary-burgundy;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  .nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    .logo-icon { font-size: 1.8rem; }
+    .logo-text { 
+      font-size: 1.4rem; 
+      margin: 0; 
+      color: $dark-charcoal; 
+      /* משקל 800 נותן נוכחות אבל עם פינות עגולות של הגופן */
+      font-weight: 800; 
+      letter-spacing: -0.02em; 
+    }
+  }
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    a {
+      text-decoration: none;
+      color: $dark-charcoal;
+      /* משקל 600 הוא ה-Sweet Spot לרכות וקריאות */
+      font-weight: 600; 
+      font-size: 1.05rem;
+      transition: all 0.2s ease;
+
+      &:hover, &.active-link {
+        color: $primary-burgundy;
+      }
+    }
+
+    .btn-nav-add {
+      background: $primary-burgundy;
+      color: white !important;
+      padding: 10px 24px;
+      /* עיגול מלא לכפתור (Pill shape) למראה הכי רך שיש */
+      border-radius: 50px; 
+      font-size: 0.95rem;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba($primary-burgundy, 0.2);
+      
+      &:hover {
+        background: #821517;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 15px rgba($primary-burgundy, 0.3);
+      }
+    }
+  }
+}
+
+.main-footer {
+  background: #1a202c;
+  color: #a0aec0;
+  padding: 40px 0;
+  text-align: center;
+  border-top: 4px solid $primary-burgundy;
+
+  .footer-content {
+    p { 
+      margin: 0 0 8px; 
+      font-weight: 600; 
+      color: white;
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+    }
+    small { 
+      font-size: 0.85rem; 
+      font-weight: 300; /* כתב דק ורציני יותר למטה */
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<div class="app-container" dir="rtl">
+  <header class="main-header">
+    <div class="nav-content">
+      <div class="logo-area">
+        <span class="logo-icon">🏘️</span>
+        <h1 class="logo-text">תיווך נדל"ן אישי</h1>
+      </div>
+      <nav class="main-nav">
+        <a routerLink="/apartments" routerLinkActive="active-link">כל הנכסים</a>
+        <a routerLink="/apartment/new" class="btn-nav-add">+ נכס חדש</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <p>מערכת ניהול נכסים - פרויקט הכנה לפרקטיקום תשפ"ו</p>
+      <small>©Shani_Ravinski&Atara_Shtiglitz&Tova_Oshinsky</small>
+    </div>
+  </footer>
+</div>
